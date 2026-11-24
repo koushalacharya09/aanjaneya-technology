@@ -109,42 +109,6 @@ export const homeIndustries = {
   allCount: industries.length,
 } as const;
 
-export const homeWorkPreview = {
-  eyebrow: "Selected work",
-  title: "Projects that shaped our practice",
-  description:
-    "Internal and client engagements we can name today. Results marked [PLACEHOLDER] until measured outcomes are ready to publish.",
-  items: [
-    {
-      name: "Diksha Education",
-      category: "Education platform",
-      summary:
-        "Digital presence and platform work for Diksha Education—clarity for parents, programmes and enquiries.",
-      result: "[PLACEHOLDER: results]",
-      image: media.workPlaceholder,
-      imageNote: "[PLACEHOLDER: image]",
-    },
-    {
-      name: "Shree Gajanan Caterers",
-      category: "Brand identity",
-      summary:
-        "Brand identity system for a catering business—consistent marks, tone and materials across touchpoints.",
-      result: "[PLACEHOLDER: results]",
-      image: media.workPlaceholder,
-      imageNote: "[PLACEHOLDER: image]",
-    },
-    {
-      name: "Brand social media creatives",
-      category: "Creative",
-      summary:
-        "Social creative systems and campaign kits so teams publish with coherence instead of one-off posts.",
-      result: "[PLACEHOLDER: results]",
-      image: media.workPlaceholder,
-      imageNote: "[PLACEHOLDER: image]",
-    },
-  ],
-} as const;
-
 export const homeAreas = {
   eyebrow: "Serving Jaipur",
   title: "Website & SEO for your locality",

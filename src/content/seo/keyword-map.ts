@@ -24,10 +24,10 @@ export const keywordMap = {
       "Websites and digital systems for jewellery, schools, healthcare, manufacturing, retail and more—built for Jaipur businesses that need real enquiries.",
   },
   work: {
-    primary: "web development case studies Jaipur",
-    title: "Work & Engagements | Aanjaneya Technology Jaipur",
+    primary: "industry website development Jaipur",
+    title: "Industry Work | Aanjaneya Technology Jaipur",
     description:
-      "How Aanjaneya Technology runs digital engagements in Jaipur. Named case studies publish with approved outcomes—talk to us about a similar challenge.",
+      "Industry-focused websites, SEO and digital systems for jewellery, education, healthcare, manufacturing and more in Jaipur.",
   },
   contact: {
     primary: "contact Aanjaneya Technology Jaipur",

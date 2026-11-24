@@ -21,7 +21,6 @@ import {
   homeProcess,
   homeServices,
   homeWhy,
-  homeWorkPreview,
 } from "@/content/home";
 import { keywordMap } from "@/content/seo/keyword-map";
 import { contactLinks, site } from "@/content/site";
@@ -208,42 +207,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* 5. Work */}
-      <section className="section-ink section-y">
-        <Container>
-          <SectionHeader
-            eyebrow={homeWorkPreview.eyebrow}
-            title={homeWorkPreview.title}
-            description={homeWorkPreview.description}
-            tone="dark"
-          />
-          <ul className="mt-10 grid gap-4 md:grid-cols-3">
-            {homeWorkPreview.items.map((project) => (
-              <li
-                key={project.name}
-                className="border border-white/10 bg-white/[0.03] p-5"
-              >
-                <p className="text-caption font-semibold uppercase tracking-[0.16em] text-saffron">
-                  {project.category}
-                </p>
-                <h3 className="mt-2 text-h4 text-white">{project.name}</h3>
-                <p className="mt-2 text-sm text-white/60">{project.summary}</p>
-                <p className="mt-3 text-xs font-medium text-white/45">{project.result}</p>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <Button asChild variant="outlineDark" size="lg">
-              <Link href="/work">
-                View work
-                <ArrowRight className="size-4" />
-              </Link>
-            </Button>
-          </div>
-        </Container>
-      </section>
-
-      {/* 6. Process */}
+      {/* 5. Process */}
       <section className="relative isolate overflow-hidden section-y">
         <SiteImage
           src={homeProcess.image.src}

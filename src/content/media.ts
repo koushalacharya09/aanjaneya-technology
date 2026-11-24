@@ -127,10 +127,6 @@ export const media = {
     src: `/media/brand/jaipur-signal.svg`,
     alt: "Abstract Jaipur digital systems graphic — starting a partnership",
   },
-  workPlaceholder: {
-    src: `/media/brand/jaipur-signal.svg`,
-    alt: "Project visual placeholder",
-  },
   gallery: [
     {
       src: `${L}/220-SM993694.jpg`,
