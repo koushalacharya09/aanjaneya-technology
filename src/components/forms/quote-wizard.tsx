@@ -15,14 +15,48 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   budgetRanges,
+  contactLinks,
   industries,
   preferredContactMethods,
   services,
+  site,
 } from "@/content/site";
 import { trackEvent } from "@/lib/analytics";
 import { captureAttributionFromUrl, readAttribution } from "@/lib/utm";
 import { indianPhoneSchema, quoteLeadSchema } from "@/lib/validation/lead";
 import { cn } from "@/lib/utils";
+
+function buildQuoteWhatsAppMessage(values: FormValues) {
+  const serviceNames = values.services
+    .map((slug) => services.find((s) => s.slug === slug)?.name ?? slug)
+    .join(", ");
+  const industryName =
+    industries.find((i) => i.slug === values.industry)?.name ||
+    values.industry ||
+    "—";
+
+  return [
+    `Hi ${site.shortName} — quote request from your website.`,
+    ``,
+    `Name: ${values.name}`,
+    `Phone: ${values.phone}`,
+    `Email: ${values.email}`,
+    `Business: ${values.businessName}`,
+    `Industry: ${industryName}`,
+    `Services: ${serviceNames || "—"}`,
+    values.budget ? `Budget: ${values.budget}` : null,
+    values.timeline ? `Timeline: ${values.timeline}` : null,
+    values.websiteUrl ? `Website: ${values.websiteUrl}` : null,
+    values.preferredContact
+      ? `Preferred contact: ${values.preferredContact}`
+      : null,
+    ``,
+    `Requirements:`,
+    values.description,
+  ]
+    .filter((line): line is string => line !== null)
+    .join("\n");
+}
 
 const steps = ["Service", "Business", "Requirements", "Contact"] as const;
 
@@ -88,7 +122,7 @@ export function QuoteWizard({ className }: { className?: string } = {}) {
       name: "",
       phone: "",
       email: "",
-      preferredContact: "",
+      preferredContact: "WhatsApp",
       consent: undefined,
       turnstileToken: siteKey ? "" : "dev-bypass",
       website: "",
@@ -164,9 +198,19 @@ export function QuoteWizard({ className }: { className?: string } = {}) {
         return;
       }
       trackEvent("form_submit", { formType: "quote" });
-      router.push(payload.redirectTo ?? "/thank-you");
+      trackEvent("whatsapp_click", { source: "quote_wizard" });
+
+      const waMessage = buildQuoteWhatsAppMessage(values);
+      const waHref = contactLinks.whatsappWithMessage(waMessage);
+      try {
+        sessionStorage.setItem("aanjaneya_quote_wa", waMessage);
+      } catch {
+        /* ignore */
+      }
+      window.open(waHref, "_blank", "noopener,noreferrer");
+      router.push(payload.redirectTo ?? "/thank-you?channel=whatsapp");
     } catch {
-      setServerError("Network error. Please try again.");
+      setServerError("Network error. Please try again or WhatsApp us.");
       setSubmitting(false);
     }
   }
@@ -406,7 +450,7 @@ export function QuoteWizard({ className }: { className?: string } = {}) {
             disabled={submitting}
             onClick={onSubmit}
           >
-            {submitting ? "Submitting…" : "Submit quote request"}
+            {submitting ? "Opening WhatsApp…" : "Submit & continue on WhatsApp"}
           </Button>
         )}
       </div>

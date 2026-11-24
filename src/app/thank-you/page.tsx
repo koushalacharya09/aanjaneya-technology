@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
@@ -10,12 +11,29 @@ import { contactLinks, site } from "@/content/site";
 
 const nextSteps = [
   "We review your enquiry and context.",
-  "We reply with clarifying questions or a suggested next call.",
+  "Continue the conversation on WhatsApp so we can clarify scope quickly.",
   "We agree a practical path—scope, timeline, and priorities.",
 ];
 
+const DEFAULT_WA =
+  "Hi — I just submitted a quote request on your website.";
+
 export default function ThankYouPage() {
   const reduceMotion = useReducedMotion();
+  const [waHref, setWaHref] = useState(
+    contactLinks.whatsappWithMessage(DEFAULT_WA),
+  );
+
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem("aanjaneya_quote_wa");
+      if (saved) {
+        setWaHref(contactLinks.whatsappWithMessage(saved));
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   return (
     <section className="section-paper section-y">
@@ -30,8 +48,8 @@ export default function ThankYouPage() {
         </motion.div>
         <h1 className="mt-8 text-h1 text-ink">Thank you — we received it.</h1>
         <p className="mt-4 text-body-lg text-muted">
-          Your enquiry is with the Aanjaneya Technology team. We’ll respond
-          shortly during business hours ({site.hoursDisplay}).
+          Your enquiry is with the Aanjaneya Technology team. For the fastest
+          sales follow-up, continue on WhatsApp ({site.phoneDisplay}).
         </p>
         <div className="mt-10 text-left">
           <h2 className="text-h3 text-ink">What happens next</h2>
@@ -51,14 +69,8 @@ export default function ThankYouPage() {
         </div>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Button asChild variant="whatsapp" size="lg">
-            <a
-              href={contactLinks.whatsappWithMessage(
-                "Hi — I just submitted an enquiry on your website.",
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp us
+            <a href={waHref} target="_blank" rel="noopener noreferrer">
+              Continue on WhatsApp
             </a>
           </Button>
           <Button asChild variant="secondary" size="lg">
