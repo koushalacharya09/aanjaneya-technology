@@ -30,7 +30,8 @@ export function createMetadata({
 }): Metadata {
   void _keywords;
   const url = absoluteUrl(path);
-  const ogImage = absoluteUrl(`/opengraph-image?title=${encodeURIComponent(title)}`);
+  /** Stable absolute OG URL (no query) so WhatsApp/Telegram show the logo preview reliably */
+  const ogImage = absoluteUrl("/opengraph-image");
 
   return {
     /** Absolute so layout `%s | brand` does not double the brand in SERP titles */
@@ -51,7 +52,8 @@ export function createMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: `${site.name} logo — ${title}`,
+          type: "image/png",
         },
       ],
     },
