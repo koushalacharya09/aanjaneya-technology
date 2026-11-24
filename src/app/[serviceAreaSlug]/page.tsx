@@ -21,11 +21,8 @@ export async function generateMetadata({ params }: Props) {
     title: landing.title,
     description: landing.description,
     path: landing.path,
-    keywords: [
-      landing.h1,
-      `${landing.area.name} Jaipur`,
-      landing.area.pincode,
-    ],
+    /** Thin until each landing has 500+ unique words */
+    noIndex: true,
   });
 }
 

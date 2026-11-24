@@ -22,7 +22,7 @@ export default function GetAQuotePage() {
           </h1>
           <p className="mt-5 max-w-2xl text-body-lg text-muted-dark">
             Four short steps. We reply with clarifying questions and a practical
-            next step—no fake fixed prices. Prefer voice? Call or WhatsApp{" "}
+            next step before quoting. Prefer voice? Call or WhatsApp{" "}
             {site.phoneDisplay}.
           </p>
         </Container>

@@ -8,46 +8,11 @@ import { media, type MediaAsset } from "@/content/media";
 export const homeHero = {
   brand: site.name,
   eyebrow: "IT company · Website & digital partner in Jaipur",
-  headline: "Your customers judge you online before they ever meet you.",
-  sub: "Website development, SEO and digital systems for Jaipur businesses—so your presence feels as solid as your real work and turns visits into enquiries.",
+  headline: "Websites, SEO & software that bring Jaipur businesses real enquiries.",
+  sub: "Your customers judge you online before they ever meet you. We build presence, SEO and digital systems so that first impression earns trust—and turns visits into conversations.",
   primaryCta: site.primaryCta,
   secondaryCta: { label: "Call now", href: "tel:+918209679146" },
   image: media.hero,
-} as const;
-
-export const homeTrust = {
-  eyebrow: "The truth",
-  /** Single Hindi emotional hook — English carries the rest of the site */
-  line: "Pehle aapki digital presence dekhi jaati hai. Uske baad bharosa banta hai.",
-  lineEn:
-    "People meet your website, WhatsApp reply and Google presence long before they meet you. We design that first impression so it feels premium, clear and human.",
-  image: media.trust,
-} as const;
-
-export const homeProof = {
-  eyebrow: "Proof without fiction",
-  title: "We don’t invent clients. We show how trust is built.",
-  description:
-    "Case studies publish only with real outcomes. Until then, here is exactly what an engagement produces—so you can judge craft, not slogans.",
-  artifacts: [
-    {
-      title: "Discovery notes",
-      description: "Goals, constraints, customers and current systems—written in business language.",
-    },
-    {
-      title: "Scope you can defend",
-      description: "Clear deliverables, timeline and trade-offs before build starts.",
-    },
-    {
-      title: "Reviewable stages",
-      description: "Design and delivery in checkpoints you can feel—not a black box.",
-    },
-    {
-      title: "Handoff that sticks",
-      description: "You own the work. Access, docs and next steps included.",
-    },
-  ],
-  image: media.why,
 } as const;
 
 export const homeProblems = {
@@ -118,7 +83,7 @@ export const homeServices = {
 
 const industryImageMap: Record<string, MediaAsset> = {
   jewellery: media.industryJewellery,
-  "textiles-exports": media.industryTemple,
+  "textiles-exports": media.industryTextiles,
   "schools-colleges": media.industrySchools,
   "coaching-institutes": media.industryCoaching,
   healthcare: media.industryHealthcare,
@@ -136,7 +101,7 @@ export const homeIndustries = {
   eyebrow: "Focus industries",
   title: "Where we go deep first",
   description:
-    "Jewellery, textiles, education, healthcare, manufacturing, retail and professional firms in Jaipur—plus more when the fit is clear.",
+    "Jewellery, textiles, education, healthcare and manufacturing in Jaipur—plus more verticals when the fit is clear.",
   featured: priorityIndustries.slice(0, 5).map((industry) => ({
     ...industry,
     image: industryImageMap[industry.slug] ?? media.industryRetail,
@@ -144,11 +109,47 @@ export const homeIndustries = {
   allCount: industries.length,
 } as const;
 
+export const homeWorkPreview = {
+  eyebrow: "Selected work",
+  title: "Projects that shaped our practice",
+  description:
+    "Internal and client engagements we can name today. Results marked [PLACEHOLDER] until measured outcomes are ready to publish.",
+  items: [
+    {
+      name: "Diksha Education",
+      category: "Education platform",
+      summary:
+        "Digital presence and platform work for Diksha Education—clarity for parents, programmes and enquiries.",
+      result: "[PLACEHOLDER: results]",
+      image: media.workPlaceholder,
+      imageNote: "[PLACEHOLDER: image]",
+    },
+    {
+      name: "Shree Gajanan Caterers",
+      category: "Brand identity",
+      summary:
+        "Brand identity system for a catering business—consistent marks, tone and materials across touchpoints.",
+      result: "[PLACEHOLDER: results]",
+      image: media.workPlaceholder,
+      imageNote: "[PLACEHOLDER: image]",
+    },
+    {
+      name: "Brand social media creatives",
+      category: "Creative",
+      summary:
+        "Social creative systems and campaign kits so teams publish with coherence instead of one-off posts.",
+      result: "[PLACEHOLDER: results]",
+      image: media.workPlaceholder,
+      imageNote: "[PLACEHOLDER: image]",
+    },
+  ],
+} as const;
+
 export const homeAreas = {
   eyebrow: "Serving Jaipur",
   title: "Website & SEO for your locality",
   description:
-    "Local pages for Malviya Nagar, Vaishali Nagar, C-Scheme, Mansarovar, Sitapura, MI Road and more—built for Jaipur search intent, not copy-paste doorway spam.",
+    "Local pages for Malviya Nagar, Vaishali Nagar, C-Scheme, Mansarovar, Sitapura, MI Road and more—built for Jaipur search intent with unique substance.",
   items: featuredLocationAreas.map((area) => ({
     name: area.name,
     pincode: area.pincode,
@@ -180,7 +181,7 @@ export const homeWhy = {
     },
     {
       title: "Transparent scope",
-      description: "Clear timelines. Honest trade-offs. No invented claims.",
+      description: "Clear timelines, honest trade-offs and deliverables you can defend.",
     },
     {
       title: "Jaipur base, national bar",
@@ -228,9 +229,9 @@ export const homeFaq = {
   ],
 } as const;
 
-export const homeFinal = {
-  title: "Ready to tighten your digital trust?",
+export const homeContact = {
+  eyebrow: "Start a conversation",
+  title: "Tell us what you want customers to feel online",
   description:
-    "Tell us what you want customers to feel when they find you online. We’ll respond with precise questions—not a fake fixed pitch.",
-  image: media.final,
+    "Share a few details. We reply with clarifying questions and a sensible next step. Prefer voice? Call or WhatsApp.",
 } as const;

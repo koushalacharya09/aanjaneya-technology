@@ -8,10 +8,12 @@ import { contactLinks, site } from "@/content/site";
 
 export function MobileCtaBar() {
   const pathname = usePathname();
-  const pageName =
-    pathname === "/" ? "homepage" : pathname.replace(/^\//, "").replace(/\//g, " › ");
+  const pageLabel =
+    pathname === "/"
+      ? "homepage"
+      : `${pathname.replace(/^\//, "").replace(/\//g, " › ")} page`;
   const whatsappHref = contactLinks.whatsappWithMessage(
-    `Hi ${site.shortName}, I'm on your ${pageName} page and would like a quote.`,
+    `Hi ${site.shortName}, I'm on your ${pageLabel} and would like a quote.`,
   );
 
   return (

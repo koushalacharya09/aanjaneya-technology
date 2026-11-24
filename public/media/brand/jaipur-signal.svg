@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Abstract Jaipur digital signal graphic">
+  <defs>
+    <radialGradient id="glow" cx="70%" cy="35%" r="55%">
+      <stop stop-color="#e8a317" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0a0304" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#140608"/>
+      <stop offset="1" stop-color="#050203"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#ink)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <!-- Arch motif (Jaipur) -->
+  <g fill="none" stroke="#f7f3ee" stroke-opacity="0.12" stroke-width="3">
+    <path d="M180 720 V380 C180 260 280 180 400 180 C520 180 620 260 620 380 V720"/>
+    <path d="M260 720 V420 C260 320 330 260 400 260 C470 260 540 320 540 420 V720"/>
+  </g>
+  <!-- Data / lattice -->
+  <g stroke="#e8a317" stroke-opacity="0.45" stroke-width="1.5">
+    <path d="M760 200 H1420 M760 280 H1280 M760 360 H1360 M760 440 H1200 M760 520 H1400"/>
+    <circle cx="760" cy="200" r="5" fill="#e8a317"/>
+    <circle cx="760" cy="360" r="5" fill="#e8a317"/>
+    <circle cx="760" cy="520" r="5" fill="#e8a317"/>
+  </g>
+  <text x="760" y="620" fill="#f7f3ee" font-family="Manrope,Segoe UI,sans-serif" font-size="48" font-weight="700">Jaipur · Digital systems</text>
+  <text x="760" y="680" fill="#e8a317" font-family="Manrope,Segoe UI,sans-serif" font-size="24" font-weight="600" letter-spacing="3">PRESENCE · ENQUIRIES · GROWTH</text>
+</svg>

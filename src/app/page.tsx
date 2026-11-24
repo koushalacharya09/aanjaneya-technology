@@ -2,36 +2,26 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import { LeadForm } from "@/components/forms/lead-form";
-import { ImageReveal } from "@/components/media/image-reveal";
 import { SiteImage } from "@/components/media/site-image";
 import { KineticHeadline } from "@/components/motion/kinetic-text";
 import { MagneticTilt } from "@/components/motion/magnetic-tilt";
 import { Reveal } from "@/components/motion/reveal";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { ClientOnly } from "@/components/ui/client-only";
 import { Container } from "@/components/ui/container";
 import { Input } from "@/components/ui/input";
 import { SectionHeader } from "@/components/ui/section-header";
 import {
-  homeAreas,
   homeAudit,
+  homeContact,
   homeFaq,
-  homeFinal,
   homeHero,
   homeIndustries,
   homeObjections,
   homeProblems,
   homeProcess,
-  homeProof,
   homeServices,
-  homeTrust,
   homeWhy,
+  homeWorkPreview,
 } from "@/content/home";
 import { keywordMap } from "@/content/seo/keyword-map";
 import { contactLinks, site } from "@/content/site";
@@ -48,7 +38,6 @@ export const metadata = createMetadata({
   title: keywordMap.home.title,
   description: keywordMap.home.description,
   path: "/",
-  keywords: keywordMap.home.primary,
 });
 
 export default function HomePage() {
@@ -59,11 +48,14 @@ export default function HomePage() {
           organizationSchema(),
           localBusinessSchema(),
           websiteSchema(),
-          faqSchema([...homeObjections.items.map((i) => ({ question: i.q, answer: i.a })), ...homeFaq.items]),
+          faqSchema([
+            ...homeObjections.items.map((i) => ({ question: i.q, answer: i.a })),
+            ...homeFaq.items,
+          ]),
         ]}
       />
 
-      {/* Hero — brand + one motion language, no orbit toys */}
+      {/* 1. Hero */}
       <section className="relative isolate min-h-[100svh] overflow-hidden bg-void text-white">
         <SiteImage
           src={homeHero.image.src}
@@ -101,66 +93,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Trust — one manifesto */}
-      <section className="relative overflow-hidden bg-void section-y text-white">
-        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[42%] lg:block">
-          <SiteImage
-            src={homeTrust.image.src}
-            alt={homeTrust.image.alt}
-            sizes="42vw"
-            className="h-full w-full"
-            overlay="saffron-glow"
-          />
-        </div>
-        <Container className="relative z-10">
-          <Reveal>
-            <p className="eyebrow text-saffron">{homeTrust.eyebrow}</p>
-            <h2 className="mt-6 max-w-3xl text-h1 text-white">{homeTrust.line}</h2>
-            <p className="mt-6 max-w-2xl text-body-lg text-white/65">{homeTrust.lineEn}</p>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* Honest proof */}
+      {/* 2. Problems */}
       <section className="section-paper section-y">
-        <Container>
-          <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <SectionHeader
-                eyebrow={homeProof.eyebrow}
-                title={homeProof.title}
-                description={homeProof.description}
-              />
-              <div className="mt-10 space-y-6 border-t border-border pt-8">
-                {homeProof.artifacts.map((item, index) => (
-                  <article key={item.title} className="grid gap-2 sm:grid-cols-[3rem_1fr]">
-                    <span className="font-mono text-caption text-saffron">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <div>
-                      <h3 className="text-h4 text-ink dark:text-white">{item.title}</h3>
-                      <p className="mt-1 text-sm text-muted">{item.description}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </Reveal>
-            <MagneticTilt intensity={10}>
-              <ImageReveal className="relative aspect-[4/5] w-full">
-                <SiteImage
-                  src={homeProof.image.src}
-                  alt={homeProof.image.alt}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="absolute inset-0"
-                />
-              </ImageReveal>
-            </MagneticTilt>
-          </div>
-        </Container>
-      </section>
-
-      {/* Problems — four only */}
-      <section className="section-paper border-t border-border pb-[var(--space-section-y)]">
         <Container>
           <Reveal>
             <SectionHeader eyebrow={homeProblems.eyebrow} title={homeProblems.title} />
@@ -194,51 +128,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Mid-page enquire + objections — sales close path */}
-      <section id="enquire" className="section-ink section-y relative scroll-mt-24">
-        <Container className="relative z-10">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-            <div>
-              <p className="eyebrow text-saffron">{homeObjections.eyebrow}</p>
-              <h2 className="mt-5 text-h1 text-white">Start with a clear conversation</h2>
-              <p className="mt-5 max-w-xl text-body-lg text-white/65">
-                Share a few details. We reply with clarifying questions—not a fake fixed price.
-                Prefer voice? Call or WhatsApp {site.phoneDisplay}.
-              </p>
-              <ul className="mt-10 space-y-5 border-t border-white/10 pt-8">
-                {homeObjections.items.map((item) => (
-                  <li key={item.q}>
-                    <p className="text-sm font-semibold text-white">{item.q}</p>
-                    <p className="mt-1.5 text-sm text-white/60">{item.a}</p>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild variant="primary" size="lg">
-                  <a href={contactLinks.phoneHref}>Call {site.phoneDisplay}</a>
-                </Button>
-                <Button asChild variant="outlineDark" size="lg">
-                  <a
-                    href={contactLinks.whatsappWithMessage(
-                      "Hi Aanjaneya Technology — I'd like a quote.",
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    WhatsApp us
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-md border border-white/10 bg-white/5 p-6 md:p-8">
-              <LeadForm formType="home" />
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* Capabilities */}
-      <section className="section-paper section-y">
+      {/* 3. Services */}
+      <section className="section-paper border-t border-border pb-[var(--space-section-y)]">
         <Container>
           <Reveal>
             <SectionHeader
@@ -275,7 +166,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Priority industries */}
+      {/* 4. Industries */}
       <section className="section-paper border-t border-border pb-[var(--space-section-y)]">
         <Container>
           <Reveal>
@@ -317,42 +208,42 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Jaipur area hub — local SEO internal links */}
-      <section className="section-paper border-t border-border pb-[var(--space-section-y)]">
+      {/* 5. Work */}
+      <section className="section-ink section-y">
         <Container>
-          <Reveal>
-            <SectionHeader
-              eyebrow={homeAreas.eyebrow}
-              title={homeAreas.title}
-              description={homeAreas.description}
-            />
-          </Reveal>
-          <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {homeAreas.items.map((area) => (
+          <SectionHeader
+            eyebrow={homeWorkPreview.eyebrow}
+            title={homeWorkPreview.title}
+            description={homeWorkPreview.description}
+            tone="dark"
+          />
+          <ul className="mt-10 grid gap-4 md:grid-cols-3">
+            {homeWorkPreview.items.map((project) => (
               <li
-                key={area.name}
-                className="border border-border p-5"
+                key={project.name}
+                className="border border-white/10 bg-white/[0.03] p-5"
               >
-                <p className="text-h4 text-ink dark:text-white">{area.name}</p>
-                <p className="mt-1 text-caption text-muted">PIN {area.pincode}</p>
-                <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold text-saffron">
-                  <Link href={area.websiteHref} className="hover:underline">
-                    Website development
-                  </Link>
-                  <span className="text-border" aria-hidden>
-                    ·
-                  </span>
-                  <Link href={area.seoHref} className="hover:underline">
-                    SEO services
-                  </Link>
-                </div>
+                <p className="text-caption font-semibold uppercase tracking-[0.16em] text-saffron">
+                  {project.category}
+                </p>
+                <h3 className="mt-2 text-h4 text-white">{project.name}</h3>
+                <p className="mt-2 text-sm text-white/60">{project.summary}</p>
+                <p className="mt-3 text-xs font-medium text-white/45">{project.result}</p>
               </li>
             ))}
           </ul>
+          <div className="mt-8">
+            <Button asChild variant="outlineDark" size="lg">
+              <Link href="/work">
+                View work
+                <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
         </Container>
       </section>
 
-      {/* Process */}
+      {/* 6. Process */}
       <section className="relative isolate overflow-hidden section-y">
         <SiteImage
           src={homeProcess.image.src}
@@ -383,7 +274,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Why — four points */}
+      {/* 7. Why us */}
       <section className="section-paper section-y">
         <Container>
           <Reveal>
@@ -403,7 +294,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Audit */}
+      {/* 8. Audit CTA */}
       <section className="relative isolate overflow-hidden section-y">
         <SiteImage
           src={homeAudit.image.src}
@@ -436,61 +327,66 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* 9. FAQ — native details so content always renders */}
       <section className="section-paper section-y">
         <Container className="max-w-3xl">
           <SectionHeader eyebrow={homeFaq.eyebrow} title={homeFaq.title} />
-          <ClientOnly fallback={<div className="mt-10 h-32 animate-pulse bg-surface-elevated" />}>
-            <Accordion type="single" collapsible className="mt-10">
-              {homeFaq.items.map((item, index) => (
-                <AccordionItem key={item.question} value={`faq-${index}`}>
-                  <AccordionTrigger>{item.question}</AccordionTrigger>
-                  <AccordionContent>{item.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </ClientOnly>
+          <div className="mt-10 divide-y divide-border border-y border-border">
+            {homeFaq.items.map((item) => (
+              <details key={item.question} className="group py-1">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left text-[0.9375rem] font-semibold text-ink tap-target marker:content-none dark:text-white [&::-webkit-details-marker]:hidden">
+                  {item.question}
+                  <span
+                    aria-hidden
+                    className="text-muted transition-transform group-open:rotate-180"
+                  >
+                    ▾
+                  </span>
+                </summary>
+                <p className="pb-5 text-sm text-muted">{item.answer}</p>
+              </details>
+            ))}
+          </div>
         </Container>
       </section>
 
-      {/* Final close — same primary CTA */}
-      <section className="section-paper border-t border-border pb-[var(--space-section-y)]">
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+      {/* 10. Contact form */}
+      <section id="enquire" className="section-ink section-y relative scroll-mt-24">
+        <Container className="relative z-10">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
             <div>
-              <div className="relative mb-8 aspect-[16/10] w-full overflow-hidden">
-                <SiteImage
-                  src={homeFinal.image.src}
-                  alt={homeFinal.image.alt}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="absolute inset-0"
-                />
-              </div>
-              <SectionHeader title={homeFinal.title} description={homeFinal.description} />
+              <p className="eyebrow text-saffron">{homeContact.eyebrow}</p>
+              <h2 className="mt-5 text-h1 text-white">{homeContact.title}</h2>
+              <p className="mt-5 max-w-xl text-body-lg text-white/65">
+                {homeContact.description} {site.phoneDisplay}.
+              </p>
+              <ul className="mt-10 space-y-5 border-t border-white/10 pt-8">
+                {homeObjections.items.map((item) => (
+                  <li key={item.q}>
+                    <p className="text-sm font-semibold text-white">{item.q}</p>
+                    <p className="mt-1.5 text-sm text-white/60">{item.a}</p>
+                  </li>
+                ))}
+              </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild variant="primary" size="lg">
-                  <Link href={site.primaryCta.href}>{site.primaryCta.label}</Link>
-                </Button>
-                <Button asChild variant="secondary" size="lg">
                   <a href={contactLinks.phoneHref}>Call {site.phoneDisplay}</a>
+                </Button>
+                <Button asChild variant="outlineDark" size="lg">
+                  <a
+                    href={contactLinks.whatsappWithMessage(
+                      "Hi Aanjaneya Technology — I'd like a quote.",
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp us
+                  </a>
                 </Button>
               </div>
             </div>
-            <div className="space-y-5 border border-border p-6">
-              <a href={contactLinks.phoneHref} className="flex justify-between gap-4 text-h4 text-ink dark:text-white">
-                <span className="text-caption font-semibold uppercase tracking-[0.18em] text-saffron">Call</span>
-                {site.phoneDisplay}
-              </a>
-              <a
-                href={contactLinks.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex justify-between gap-4 text-h4 text-ink dark:text-white"
-              >
-                <span className="text-caption font-semibold uppercase tracking-[0.18em] text-saffron">WhatsApp</span>
-                Message us
-              </a>
-              <p className="text-sm text-muted">{site.address} · {site.hoursDisplay}</p>
+            <div className="rounded-md border border-white/10 bg-white/5 p-6 md:p-8">
+              <LeadForm formType="home" />
             </div>
           </div>
         </Container>

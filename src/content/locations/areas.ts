@@ -180,7 +180,7 @@ export const jaipurAreas: readonly JaipurArea[] = [
         {
           question: "How do you price SEO for C-Scheme businesses?",
           answer:
-            "After discovery—based on competition, content needs and goals. No fake ‘page 1 in 7 days’ packages.",
+            "After discovery—based on competition, content needs and goals. We set durable timelines, not overnight ranking packages.",
         },
       ],
     },
@@ -297,7 +297,7 @@ export const jaipurAreas: readonly JaipurArea[] = [
         {
           question: "Can you help with review strategy?",
           answer:
-            "We coach ethical review requests and response tone. We do not buy fake reviews.",
+            "We coach ethical review requests and response tone grounded in real customer experiences.",
         },
         {
           question: "How do you measure SEO for a Raja Park shop?",
@@ -455,7 +455,7 @@ export const jaipurAreas: readonly JaipurArea[] = [
         {
           question: "Can you show machinery and plant photos professionally?",
           answer:
-            "Yes—structured galleries and process sections that feel industrial-credible, not stock-photo fake.",
+            "Yes—structured galleries and process sections that feel industrial-credible and specific to your floor.",
         },
         {
           question: "Will the site help with dealer or distributor enquiries?",
@@ -714,7 +714,7 @@ export const jaipurAreas: readonly JaipurArea[] = [
       whoWeHelp:
         "Institutes and healthcare providers in 302039 that want search visibility tied to admissions and appointments.",
       localContext:
-        "We research parent and patient queries, build matching pages and improve local profiles without fake ranking promises.",
+        "We research parent and patient queries, build matching pages and improve local profiles with durable SEO practice.",
       faqs: [
         {
           question: "Is education SEO allowed with advertising policies?",

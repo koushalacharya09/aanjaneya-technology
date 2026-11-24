@@ -6,7 +6,7 @@ export const site = {
   supportingLine:
     "Websites, software and growth systems for Jaipur businesses that want to look as serious online as they are offline.",
   description:
-    "Aanjaneya Technology helps jewellery, education, healthcare, retail and manufacturing businesses in Jaipur get found, convert enquiries, and run clearer digital systems—without fake claims or template work.",
+    "Aanjaneya Technology helps jewellery, education, healthcare, retail and manufacturing businesses in Jaipur get found, convert enquiries, and run clearer digital systems with durable craft.",
   locationLine: "Based in Jaipur, Rajasthan · Serving clients across India.",
   phoneDisplay: "+91 8209679146",
   phoneE164: "+918209679146",
@@ -192,13 +192,13 @@ export const industries = [
     slug: "retail-local-business",
     name: "Retail & Local Businesses",
     hoverSolution: "Google presence, offers, and enquiry conversion",
-    priority: true,
+    priority: false,
   },
   {
     slug: "professional-services",
     name: "CA, Law & Professional Firms",
     hoverSolution: "Credibility sites and discreet enquiry routing",
-    priority: true,
+    priority: false,
   },
   {
     slug: "logistics-ecommerce",
@@ -232,7 +232,7 @@ export const primaryNav = [
   {
     label: "Industries",
     href: "/industries",
-    children: industries.map((industry) => ({
+    children: priorityIndustries.map((industry) => ({
       label: industry.name,
       href: `/industries/${industry.slug}`,
       description: industry.hoverSolution,

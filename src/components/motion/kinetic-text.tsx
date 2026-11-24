@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
-/** Visual word rise with full sentence exposed to assistive tech */
+/** Animated headline: one clean sr-only sentence; visual words stay spaced. */
 export function KineticHeadline({
   text,
   className,
@@ -15,18 +15,23 @@ export function KineticHeadline({
   as?: "h1" | "h2";
 }) {
   const reduceMotion = useReducedMotion();
-  const words = text.split(" ");
+  const words = text.split(/\s+/).filter(Boolean);
 
   return (
     <Tag className={cn("text-display", className)}>
       <span className="sr-only">{text}</span>
-      <span aria-hidden className="[perspective:900px]">
+      <span
+        aria-hidden="true"
+        className="flex flex-wrap gap-x-[0.3em] gap-y-[0.12em] [perspective:900px]"
+      >
         {words.map((word, i) => (
           <span
             key={`${word}-${i}`}
-            className="mr-[0.28em] inline-block overflow-hidden align-bottom"
+            aria-hidden="true"
+            className="inline-block overflow-hidden align-bottom"
           >
             <motion.span
+              aria-hidden="true"
               className="inline-block"
               initial={
                 reduceMotion === true

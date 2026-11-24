@@ -31,7 +31,7 @@ const values = [
   },
   {
     title: "Honesty",
-    description: "No invented claims, no ranking guarantees—just durable work and transparent scope.",
+    description: "Durable work, transparent scope, and reporting you can trust.",
   },
 ] as const;
 

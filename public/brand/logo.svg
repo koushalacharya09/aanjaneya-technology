@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 341" role="img" aria-label="Aanjaneya Technology">
+  <rect width="1024" height="341" fill="#5c0a12"/>
+  <!-- Mark: stylized A + trident -->
+  <g transform="translate(72 58)">
+    <path fill="#f7f3ee" d="M112 210 L56 48 H88 L128 168 L168 48 H200 L144 210 Z"/>
+    <path fill="url(#trishul)" d="M128 42 L118 78 L108 70 L118 118 L108 148 L128 128 L148 148 L138 118 L148 70 L138 78 Z"/>
+    <path fill="url(#trishul)" d="M128 128 L122 210 H134 Z"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="300" y="168" fill="#f7f3ee" font-family="Manrope,Segoe UI,Helvetica,Arial,sans-serif" font-size="72" font-weight="700" letter-spacing="-1.5">aanjaneya</text>
+  <line x1="300" y1="210" x2="430" y2="210" stroke="#e8a317" stroke-width="2"/>
+  <text x="448" y="218" fill="#e8a317" font-family="Manrope,Segoe UI,Helvetica,Arial,sans-serif" font-size="22" font-weight="600" letter-spacing="8">TECHNOLOGY</text>
+  <line x1="692" y1="210" x2="900" y2="210" stroke="#e8a317" stroke-width="2"/>
+  <defs>
+    <linearGradient id="trishul" x1="108" y1="42" x2="148" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f97316"/>
+      <stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+</svg>

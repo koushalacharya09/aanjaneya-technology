@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 
 import { allServices } from "@/content/services";
 import { industries } from "@/content/industries";
-import { allLocationLandings } from "@/content/locations";
 import { absoluteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const now = new Date();
 
+  /** Location landings stay out of the sitemap while noindex (until 500+ unique words). */
   return [
     ...staticRoutes.map((path) => ({
       url: absoluteUrl(path || "/"),
@@ -39,12 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8,
-    })),
-    ...allLocationLandings().map((landing) => ({
-      url: absoluteUrl(landing.path),
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.75,
     })),
   ];
 }

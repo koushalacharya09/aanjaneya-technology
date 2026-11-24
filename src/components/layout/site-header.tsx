@@ -71,7 +71,29 @@ export function SiteHeader() {
       }}
     >
       <Container className="flex h-[var(--header-height)] items-center justify-between gap-3">
-        <Logo variant="full" tone={logoTone} size="sm" className="shrink-0" />
+        <Link
+          href="/"
+          aria-label={`${site.name} home`}
+          className="group relative inline-flex shrink-0 max-w-full"
+        >
+          <span
+            className="pointer-events-none absolute -inset-2 rounded-lg bg-saffron/15 opacity-70 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+            aria-hidden
+          />
+          <span className="relative inline-flex overflow-hidden rounded-md border border-saffron/35 bg-gradient-to-br from-[#3a0a10] via-[#1a0508] to-[#0a0304] p-1.5 shadow-[0_0_0_1px_rgba(232,163,23,0.12),0_18px_40px_-18px_rgba(0,0,0,0.85)] ring-1 ring-white/5 transition duration-300 group-hover:border-saffron/55 group-hover:shadow-[0_0_0_1px_rgba(232,163,23,0.22),0_22px_48px_-16px_rgba(232,163,23,0.25)] sm:p-2">
+            <span
+              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-saffron/70 to-transparent"
+              aria-hidden
+            />
+            <Logo
+              variant="full"
+              tone={logoTone}
+              size="sm"
+              href=""
+              className="relative z-[1]"
+            />
+          </span>
+        </Link>
 
         <MegaMenu tone={menuTone} />
 

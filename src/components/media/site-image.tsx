@@ -73,6 +73,7 @@ export function SiteImage({
           fill={fill}
           priority={priority}
           sizes={sizes}
+          unoptimized={src.endsWith(".svg")}
           className={cn("object-cover", imageClassName)}
         />
       </motion.div>

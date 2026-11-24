@@ -18,7 +18,8 @@ export function createMetadata({
   title,
   description,
   path = "/",
-  keywords,
+  /** Accepted for call-site compatibility; never emitted (keywords meta is obsolete). */
+  keywords: _keywords,
   noIndex = false,
 }: {
   title: string;
@@ -27,6 +28,7 @@ export function createMetadata({
   keywords?: string | string[];
   noIndex?: boolean;
 }): Metadata {
+  void _keywords;
   const url = absoluteUrl(path);
   const ogImage = absoluteUrl(`/opengraph-image?title=${encodeURIComponent(title)}`);
 
@@ -34,7 +36,6 @@ export function createMetadata({
     /** Absolute so layout `%s | brand` does not double the brand in SERP titles */
     title: { absolute: title },
     description,
-    keywords,
     alternates: {
       canonical: url,
     },

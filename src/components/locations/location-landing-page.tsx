@@ -138,9 +138,9 @@ export function LocationLandingPage({ landing }: { landing: LocationLanding }) {
               Tell us what you need in {area.name}.
             </h2>
             <p className="mt-4 text-body-lg text-white/65">
-              Share a few details. We reply with clarifying questions—not a fake
-              fixed price. Serving businesses across Jaipur; most collaboration
-              is online or by appointment.
+              Share a few details. We reply with clarifying questions and a
+              practical next step. Serving businesses across Jaipur; most
+              collaboration is online or by appointment.
             </p>
             <ul className="mt-8 space-y-4 border-t border-white/10 pt-8">
               {copy.faqs.map((faq) => (

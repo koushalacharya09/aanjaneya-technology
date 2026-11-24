@@ -4,8 +4,8 @@ const L = "/media/library";
 
 export const media = {
   hero: {
-    src: `${L}/500-SM1125045.jpg`,
-    alt: "Partners walking a modern campus while reviewing a tablet together",
+    src: `/media/brand/jaipur-signal.svg`,
+    alt: "Abstract Jaipur digital systems graphic — presence, enquiries, growth",
   },
   trust: {
     src: `${L}/300-SM1085970.jpg`,
@@ -99,6 +99,10 @@ export const media = {
     src: `${L}/20-HQ368238.jpg`,
     alt: "Temple gopuram — heritage and community trust",
   },
+  industryTextiles: {
+    src: `/media/brand/textiles-abstract.svg`,
+    alt: "Abstract textile weave graphic for handicrafts and exports",
+  },
   industryRetail: {
     src: `${L}/19-SM820920.jpg`,
     alt: "Local shopkeeper with digital payments at the counter",
@@ -112,16 +116,20 @@ export const media = {
     alt: "Advisory conversation over a laptop outdoors",
   },
   why: {
-    src: `${L}/220-SM849390.jpg`,
-    alt: "Partners collaborating with tablet on a campus staircase",
+    src: `${L}/220-SM781232.jpg`,
+    alt: "Leadership reviewing live charts in a focused boardroom",
   },
   audit: {
     src: `${L}/16-SM984945.jpg`,
     alt: "Executive reviewing a digital presence on a tablet",
   },
   final: {
-    src: `${L}/500-SM1125027.jpg`,
-    alt: "Handshake outside a modern glass campus — starting together",
+    src: `/media/brand/jaipur-signal.svg`,
+    alt: "Abstract Jaipur digital systems graphic — starting a partnership",
+  },
+  workPlaceholder: {
+    src: `/media/brand/jaipur-signal.svg`,
+    alt: "Project visual placeholder",
   },
   gallery: [
     {

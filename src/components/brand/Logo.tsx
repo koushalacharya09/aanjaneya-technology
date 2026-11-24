@@ -6,7 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
 
-/** Horizontal brand lockup — Celebal-style header: icon + wordmark in one asset */
+/** Horizontal brand lockup — official JPEG */
 const LOGO_SRC = "/brand/logo.jpg";
 
 /** Intrinsic ratio of the official horizontal logo (1024×341) */
@@ -63,7 +63,6 @@ export function Logo({
   variant = "full",
   size = "md",
 }: LogoProps) {
-  /** Mark uses slightly shorter height for tight spaces */
   const height = variant === "mark" ? Math.round(heights[size] * 0.9) : heights[size];
   const width = widthFor(height);
 

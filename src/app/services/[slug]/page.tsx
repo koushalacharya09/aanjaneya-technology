@@ -265,7 +265,7 @@ export default async function ServicePage({ params }: Props) {
 
       <CtaBand
         title="Ready to scope this properly?"
-        description="No invented promises—just a clear conversation about fit, scope and next steps."
+        description="A clear conversation about fit, scope and next steps."
         primary={site.primaryCta}
         secondary={{ label: "Contact", href: "/contact" }}
       />
